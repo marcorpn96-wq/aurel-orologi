@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {"label":"AUREL: anteprima HTML","type":"shell","command":"node","args":["scripts/preview.cjs"],"isBackground":true,"problemMatcher":[]},
+    {"label":"AUREL: server PHP","type":"shell","command":"php","args":["-S","127.0.0.1:8000","-t","public"],"isBackground":true,"problemMatcher":[]},
+    {"label":"AUREL: verifica progetto","type":"shell","command":"node","args":["scripts/check.cjs"],"problemMatcher":[]}
+  ]
+}

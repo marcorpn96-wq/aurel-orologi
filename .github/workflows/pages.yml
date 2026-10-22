@@ -1,0 +1,42 @@
+name: Demo statica AUREL
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verifica pagine, catalogo e riferimenti
+        run: npm run check
+      - name: Verifica sintassi PHP
+        run: php -l public/api/index.php
+      - name: Verifica API e database PHP
+        run: node scripts/test-api.cjs
+      - uses: actions/configure-pages@v5
+      - name: Prepara soltanto i file statici
+        run: |
+          mkdir -p dist
+          cp public/*.html dist/
+          cp -R public/assets dist/assets
+          touch dist/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Pubblica demo
+        id: deployment
+        uses: actions/deploy-pages@v4

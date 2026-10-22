@@ -1,0 +1,11 @@
+{
+  "name": "aurel-orologi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Concept e-commerce di orologi di lusso: HTML, CSS, JavaScript e PHP.",
+  "scripts": {
+    "start": "node scripts/preview.cjs",
+    "check": "node scripts/check.cjs"
+  },
+  "engines": { "node": ">=18" }
+}
