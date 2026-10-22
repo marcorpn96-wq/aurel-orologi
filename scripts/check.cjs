@@ -22,5 +22,5 @@ for(const name of html){
   assert.equal(new Set(ids).size,ids.length,`${name}: duplicate IDs`);
 }
 for(const p of products){assert.ok(Number.isInteger(p.price)&&p.price>0);assert.ok(fs.existsSync(path.join(root,p.id+'.html')));assert.ok(fs.existsSync(path.join(root,'assets',p.id+'.svg')));}
-new vm.Script(fs.readFileSync(path.join(root,'assets/app.js'),'utf8'));
+for(const file of fs.readdirSync(path.join(root,'assets')).filter(f=>f.endsWith('.js'))) new vm.Script(fs.readFileSync(path.join(root,'assets',file),'utf8'),{filename:file});
 console.log('OK: 9 pagine, 4 prodotti, link e immagini locali, cataloghi allineati, JavaScript valido.');

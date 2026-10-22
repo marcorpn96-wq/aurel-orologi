@@ -4,18 +4,22 @@ Sito e-commerce dimostrativo in italiano, costruito con HTML, CSS, JavaScript e 
 
 ## Pagine e funzioni
 
-- Home con selettore dei quattro modelli e animazioni prospettiche.
+- Home con orologio scheletrato a livelli, sei ingranaggi animati, bilanciere, lancetta dei secondi, rotazione interattiva e vista esplosa.
 - Orologi: filtri per stile e ordinamento per prezzo.
 - Notturno, Pelagos, Meridiano e Aureo: quattro pagine prodotto con illustrazione SVG originale, vista prospettica, ingrandimento, specifiche e prezzo.
 - Chi siamo e Contatti.
 - Carrello persistente nel browser: quantità da 1 a 5, rimozione, riepilogo e simulazione ordine.
 - Layout responsive, navigazione da tastiera, supporto alla preferenza di movimento ridotto.
 
-Le cinque sezioni richieste più le quattro schede prodotto formano **9 pagine HTML**. Le animazioni 3D usano prospettiva e trasformazioni CSS sulle illustrazioni SVG: non sono modelli tridimensionali ruotabili a 360°.
+Le cinque sezioni richieste più le quattro schede prodotto formano **9 pagine HTML**. La hero Studio Skeleton è un concept visivo separato dai quattro prodotti. Il suo orologio è composto da sette livelli SVG disposti nello spazio con CSS 3D; non è un modello CAD ruotabile a 360°. Gli ingranaggi illustrano il movimento, senza simulare un calibro reale.
+
+Nella hero usa “Esplora l’interno” per separare i componenti e “Ricomponi orologio” per richiuderli. Trascina orizzontalmente l’orologio o usa il cursore “Ruota l’orologio”, accessibile anche con i tasti freccia. “Pausa movimento” ferma le animazioni. La preferenza di movimento ridotto viene rispettata all’avvio; fuori dallo schermo le animazioni si fermano automaticamente.
 
 ## Aprire in Visual Studio Code
 
 Apri l'intera cartella `aurel` con File → Apri cartella. Non servono pacchetti npm.
+
+**Senza npm:** installa l’estensione Live Server di Ritwick Dey in VS Code, fai clic destro su `public/index.html` e scegli “Open with Live Server”. Le modifiche salvate vengono mostrate nell’anteprima. Questa modalità include tutte le animazioni della hero.
 
 Anteprima statica (Node.js 18 o superiore):
 
@@ -59,6 +63,7 @@ Per la demo su Pages, nel repository scegliere Settings → Pages → Source →
 ## Modificare il progetto
 
 - Aspetto: `public/assets/style.css`.
+- Hero scheletrata: `public/assets/skeleton-hero.css` e `public/assets/skeleton-hero.js`; il testo è in `public/index.html`.
 - Interazioni: `public/assets/app.js`.
 - Immagini: quattro SVG originali in `public/assets/`.
 - Testi: pagine HTML in `public/`.
