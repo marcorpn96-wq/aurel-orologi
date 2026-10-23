@@ -1,0 +1,38 @@
+/* Hero skeleton: livelli SVG nello spazio 3D, nessuna dipendenza esterna. */
+.hero.skeleton-hero{min-height:780px;grid-template-columns:.95fr 1.15fr;background:radial-gradient(ellipse at 76% 43%,#22312588 0,#10181066 28%,transparent 58%);isolation:isolate}
+.skeleton-hero .hero-copy{padding:100px 0 130px 11.5%;align-self:center}
+.skeleton-hero .hero-copy h1{font-size:clamp(66px,6.8vw,108px);line-height:1.02;margin:26px 0}
+.skeleton-hero .hero-copy p{max-width:350px;font-size:13px;line-height:1.95}
+.skeleton-hero .hero-note{font-size:9px;letter-spacing:.5px}
+.skeleton-stage{--watch-y:-22deg;--watch-x:12deg;position:relative;min-height:690px;perspective:1400px;min-width:0;align-self:stretch;overflow:visible}
+.skeleton-stage:before{content:'';position:absolute;width:65%;height:55%;top:17%;left:16%;border-radius:50%;background:#7a89581a;filter:blur(45px)}
+.skeleton-stage .orbit{width:400px;height:400px;top:44%;left:49%;border-color:#9eaf7330}
+.skeleton-stage .orbit-two{width:520px;height:520px;border-style:solid;border-color:#75896415}
+.skeleton-drag{position:absolute;inset:0 0 125px;perspective:1400px;cursor:grab;touch-action:pan-y;user-select:none}
+.is-dragging .skeleton-drag{cursor:grabbing}
+.skeleton-assembly{position:absolute;width:540px;height:666px;max-width:100%;left:50%;top:47%;transform-style:preserve-3d;transform:translate(-50%,-50%) rotateX(var(--watch-x)) rotateY(var(--watch-y)) rotateZ(-13deg);transition:transform .65s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.is-dragging .skeleton-assembly{transition:none}
+.skeleton-layer{position:absolute;inset:0;width:100%;height:100%;overflow:visible;transition:transform 1.3s cubic-bezier(.2,.7,.2,1);backface-visibility:visible}
+.layer-back{transform:translateZ(-20px)}.layer-case{transform:translateZ(-8px)}.layer-movement{transform:translateZ(0px)}.layer-bridges{transform:translateZ(9px)}.layer-dial{transform:translateZ(18px)}.layer-hands{transform:translateZ(24px)}.layer-glass{transform:translateZ(32px)}
+.is-exploded .layer-back{transform:translateZ(-105px)}.is-exploded .layer-case{transform:translateZ(-67px)}.is-exploded .layer-movement{transform:translateZ(-10px)}.is-exploded .layer-bridges{transform:translateZ(51px)}.is-exploded .layer-dial{transform:translateZ(103px)}.is-exploded .layer-hands{transform:translateZ(135px)}.is-exploded .layer-glass{transform:translateZ(175px)}
+.is-exploded{--watch-x:23deg}.is-exploded .skeleton-assembly{transform:translate(-50%,-50%) rotateX(var(--watch-x)) rotateY(calc(var(--watch-y) - 14deg)) rotateZ(-15deg) scale(.88)}
+.rotating-cog{transform-origin:0 0;animation:skeleton-turn var(--duration) linear infinite;animation-direction:var(--direction)}
+.balance{transform-origin:0 0;animation:skeleton-balance .7s ease-in-out infinite alternate}
+.seconds-hand{transform-origin:0 0;animation:skeleton-turn 60s linear infinite}
+@keyframes skeleton-turn{to{transform:rotate(360deg)}}@keyframes skeleton-balance{from{transform:rotate(-38deg)}to{transform:rotate(38deg)}}
+.is-paused .rotating-cog,.is-paused .balance,.is-paused .seconds-hand,.offscreen .rotating-cog,.offscreen .balance,.offscreen .seconds-hand{animation-play-state:paused}
+.skeleton-label{position:absolute;right:6%;top:16%;writing-mode:vertical-rl;font-size:8px;letter-spacing:3px;color:#aab793}
+.skeleton-controls{position:absolute;left:12%;right:12%;bottom:83px;z-index:5;text-align:center}
+.skeleton-state{font-size:8px;letter-spacing:2px;color:var(--gold);display:block;margin-bottom:10px;min-height:14px}
+.skeleton-buttons{display:flex;justify-content:center;gap:12px}
+.skeleton-buttons button{border:1px solid #525c43;background:#10180fe6;color:#c6ccbb;font-size:10px;letter-spacing:.3px;padding:11px 15px;min-height:42px;transition:border-color .2s,background .2s}
+.skeleton-buttons button:first-child{border-color:var(--gold);color:var(--gold)}.skeleton-buttons button:hover{background:#29341f}.skeleton-buttons button[aria-pressed=true]{background:#2b3522}
+.skeleton-rotation{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:12px;color:#9ca98b;font-size:9px}
+.skeleton-rotation input{width:110px;height:18px;padding:0;margin:0;accent-color:var(--gold);border:0;background:none;cursor:ew-resize}
+.skeleton-fallback{position:absolute;height:90%;width:100%;object-fit:contain;top:0;left:0}.is-ready .skeleton-fallback{display:none}
+.skeleton-stage:not(.is-ready) .skeleton-controls{display:none}
+.hero-bottom .skeleton-edition{color:var(--gold);display:flex;align-items:center;gap:10px;font-size:8px;letter-spacing:2px}.skeleton-edition:before{content:'';width:5px;height:5px;background:#a8bf8a;border-radius:50%;box-shadow:0 0 10px #a8bf8a88}
+@media(min-width:1600px){.hero.skeleton-hero{min-height:850px}.skeleton-assembly{width:610px;height:752px}.skeleton-stage{min-height:780px}}
+@media(max-width:1100px){.hero.skeleton-hero{min-height:720px}.skeleton-hero .hero-copy{padding-top:80px}.skeleton-hero .hero-copy h1{font-size:75px}.skeleton-assembly{width:470px;height:580px}.skeleton-stage{min-height:650px}.skeleton-controls{left:5%;right:5%}.skeleton-stage .orbit{width:300px;height:300px}.skeleton-stage .orbit-two{width:400px;height:400px}}
+@media(max-width:700px){.hero.skeleton-hero{display:flex;min-height:0}.skeleton-hero .hero-copy{align-self:stretch;padding:45px 6% 0}.skeleton-hero .hero-copy h1{font-size:clamp(58px,15vw,76px);margin:20px 0}.skeleton-hero .hero-copy p{font-size:12px;margin-bottom:22px;max-width:330px}.skeleton-hero .hero-note{display:none}.skeleton-stage{min-height:650px;width:100%;margin:0 0 60px}.skeleton-drag{inset:0 0 122px}.skeleton-assembly{width:420px;height:518px;top:48%;max-width:none}.skeleton-stage .orbit{top:39%;width:280px;height:280px}.skeleton-stage .orbit-two{width:360px;height:360px}.skeleton-controls{bottom:24px;left:6%;right:6%}.skeleton-label{right:5%;top:18%;font-size:7px;letter-spacing:2px}.skeleton-rotation{margin-top:15px}.skeleton-buttons button{min-height:44px}.hero-bottom .skeleton-edition{font-size:7px;letter-spacing:1px}.skeleton-hero .hero-bottom>a{font-size:6px;letter-spacing:1px}.is-exploded .skeleton-assembly{transform:translate(-50%,-50%) rotateX(23deg) rotateY(calc(var(--watch-y) - 14deg)) rotateZ(-15deg) scale(.78)}}
+@media(prefers-reduced-motion:reduce){.skeleton-layer,.skeleton-assembly{transition:none!important}.skeleton-stage:not(.is-paused) .rotating-cog{animation:skeleton-turn var(--duration) linear infinite!important;animation-direction:var(--direction)!important}.skeleton-stage:not(.is-paused) .balance{animation:skeleton-balance .7s ease-in-out infinite alternate!important}.skeleton-stage:not(.is-paused) .seconds-hand{animation:skeleton-turn 60s linear infinite!important}.offscreen .rotating-cog,.offscreen .balance,.offscreen .seconds-hand{animation-play-state:paused!important}}
